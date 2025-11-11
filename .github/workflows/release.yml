@@ -14,7 +14,7 @@ jobs:
           PRERELEASE: ${{ github.event.release.prerelease }}
           DRAFT: ${{ github.event.release.draft }}
           DEFAULT_BRANCH: ${{ github.event.release.target_commitish == github.event.repository.default_branch }}
-          LATEST: {{github.event.release.tag_name == env.LATEST_TAG }}
+          LATEST: ${{github.event.release.tag_name == env.LATEST_TAG }}
         run: |                
           echo "PRERELEASE=$PRERELEASE"
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH"
