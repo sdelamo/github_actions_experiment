@@ -8,8 +8,12 @@ jobs:
     steps:
       - name: Echo
         env:
+          LASTRELEASE: ${{ github.event.release.lastrelease }}
           PRERELEASE: ${{ github.event.release.prerelease }}
+          DRAFT: ${{ github.event.release.draft }}
           DEFAULT_BRANCH: ${{ github.event.release.target_commitish == github.event.repository.default_branch }}
-        run: | 
+        run: |
+          echo "LASTRELEASE=$LASTRELEASE"
           echo "PRERELEASE=$PRERELEASE"
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH"
+          echo "DRAFT=$DRAFT"
