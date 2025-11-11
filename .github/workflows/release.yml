@@ -1,0 +1,16 @@
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        env:
+          PRERELEASE: ${{ github.event.release.prerelease }}
+          DEFAULT_BRANCH: ${{ github.event.release.target_commitish == github.event.repository.default_branch }}
+        run: | 
+          echo "PRERELEASE=$PRERELEASE"
+          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH"
